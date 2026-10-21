@@ -16,21 +16,25 @@ export const navLinks = [
 export const heroStats = [
   {
     value: "~468 mm / 48h",
+    researchSlug: "flooding",
     label: "Rain in Cyclone Michaung, Dec 2023",
     detail: "17 deaths, >41,000 evacuated, Tamil Nadu losses over Rs 11,000 crore.",
   },
   {
     value: "4,592",
+    researchSlug: "health",
     label: "Dengue cases in Chennai in 2026 to early Oct",
     detail: "1,293 in September alone, with 100+ fever camps a day running.",
   },
   {
     value: "34.1 lakh / day",
+    researchSlug: "mobility",
     label: "MTC bus passengers — but only 36%",
     detail: "of Chennai is within walking distance of high-frequency bus service (ITDP).",
   },
   {
     value: "5,000 ha → ~1,247 ha",
+    researchSlug: "water",
     label: "Pallikaranai marsh, 1980s → today",
     detail: "~38% encroached. Chennai floods and runs dry for the same reasons.",
   },
@@ -55,6 +59,7 @@ export const threeTests = [
 
 export interface ProblemCard {
   title: string
+  researchSlug: string
   stat: string
   detail: string
   source: string
@@ -63,6 +68,7 @@ export interface ProblemCard {
 export const problemCards: ProblemCard[] = [
   {
     title: "Flooding & waterlogging",
+    researchSlug: "flooding",
     stat: "500+ deaths in 2015 · Michaung 2023",
     detail:
       "The CAG called the 2015 floods a “man-made disaster”: reservoir releases, floodplain construction, choked drains. Michaung repeated it in Dec 2023.",
@@ -70,6 +76,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Water scarcity — Day Zero",
+    researchSlug: "water",
     stat: "19 Jun 2019: all 4 reservoirs dry",
     detail:
       "Waterbody area fell from 12.6 km² (1893) to ~3.2 km² (2017). Around Pallikaranai, a private tanker economy fills the gap — at a price.",
@@ -77,6 +84,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Extreme heat",
+    researchSlug: "heat",
     stat: "41–42 °C humid spells",
     detail:
       "Tamil Nadu is the first state with an overarching Heat Mitigation Strategy and heatwaves declared a state disaster. Outdoor workers still have nowhere to rest or refill water.",
@@ -84,6 +92,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Air pollution",
+    researchSlug: "air",
     stat: "PM10 only 66 → 58 µg/m³, 2017–18 → 2024–25",
     detail:
       "Average AQI improved from 114 (2015) to 75 (2025), still not “Good”. Hotspots are hyperlocal: Manali, Ennore, Perungudi, Kodungaiyur.",
@@ -91,6 +100,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Mobility & access gap",
+    researchSlug: "mobility",
     stat: "61% near transit · only 36% near high-frequency bus",
     detail:
       "Chennai One (Sep 2025) unified MTC, Metro, suburban rail and Namma Yatri autos under one QR. The gap now is first/last mile, accessibility, and safety.",
@@ -98,6 +108,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Waste & polluted waterways",
+    researchSlug: "waste",
     stat: "~6,150 tonnes/day · 4-way segregation mandated Sep 2026",
     detail:
       "Kodungaiyur and Perungudi dumps, very low source segregation, and the Cooum, Adyar and Buckingham Canal receiving untreated sewage and solid waste.",
@@ -105,6 +116,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Dengue & public health",
+    researchSlug: "health",
     stat: "TN ~20,000 cases · Chennai 4,592 (2026)",
     detail:
       "Child anaemia in Chennai is 55.3% (NFHS-5). Elder Line 14567 exists because elders face isolation, abuse and pension confusion. The hackable slice is reporting, discovery and follow-up.",
@@ -112,6 +124,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Livelihoods — informal Chennai",
+    researchSlug: "livelihoods",
     stat: "Gig welfare board 2023 · AC rest lounges Jun 2025",
     detail:
       "Street vendors are blocked on a Certificate of Vending or Letter of Recommendation for PM SVANidhi credit. Women gig workers report no toilets, water or rest zones.",
@@ -119,6 +132,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Coast & Ennore",
+    researchSlug: "coast",
     stat: ">41% of TN coast eroding · 8,000+ Ennore fishers",
     detail:
       "Fly ash, hot-water effluents and the Dec 2023 oil spill (2,301 fisher families, 787 boats) are collapsing catches — and fishers have no price or discovery power.",
@@ -126,6 +140,7 @@ export const problemCards: ProblemCard[] = [
   },
   {
     title: "Housing & resettlement",
+    researchSlug: "housing",
     stat: "Perumbakkam: ~60,000 people, 25–30 km from origin",
     detail:
       "Resettled families lost livelihood proximity, schooling continuity and information access. Researchers document a digital divide inside the colonies themselves.",
@@ -137,6 +152,7 @@ export type Solvability = "High" | "Medium-High" | "Medium"
 
 export interface SolvabilityRow {
   problem: string
+  researchSlug: string
   buildThis: string
   doNotPromise: string
   level: Solvability
@@ -144,20 +160,20 @@ export interface SolvabilityRow {
 }
 
 export const solvabilityRows: SolvabilityRow[] = [
-  { problem: "Flooding", buildThis: "Street-level flood reporting + alerts, relief matching, reservoir/rain dashboard, safe-route map", doNotPromise: "New SWD network, desilting, floodplain removal", level: "High", note: "info / coordination" },
-  { problem: "Water scarcity", buildThis: "Tanker / RWH / borewell reporting, reservoir-level alerts, leak reporting, water-quality logging", doNotPromise: "Desalination, new reservoirs, pipeline network", level: "High", note: "info — supply itself is Low" },
-  { problem: "Heat", buildThis: "Heat-safe routing, water/rest/cool-roof point discovery, worker alerts in Tamil voice", doNotPromise: "Tree-planting at scale, building-code retrofit", level: "High" },
-  { problem: "Air", buildThis: "Hyperlocal AQI + clean-air routes, asthma / outdoor-work advisories, dust/burning reports", doNotPromise: "Industrial retrofit, NCAP enforcement", level: "High", note: "advisory" },
-  { problem: "Mobility / safety", buildThis: "Multimodal journey help, accessibility & safety layers, blackspot reporting, feeder matching", doNotPromise: "Metro Phase II, new bus fleet, road widening", level: "High", note: "layer" },
-  { problem: "Waste / waterways", buildThis: "Segregation coaching + pickup tracking, dumping reports, recycler / bulk-generator matching (ONDC)", doNotPromise: "Biomining completion, new processing plants", level: "Medium-High" },
-  { problem: "Dengue / health access", buildThis: "Breeding-site reports, fever-camp & facility discovery, follow-up reminders, FHIR prototypes", doNotPromise: "Vector control at city scale, new hospitals", level: "Medium-High" },
-  { problem: "NCD / maternal / mental health", buildThis: "Screening follow-up, Tamil reminders, referral & check-in tools with human escalation", doNotPromise: "Clinical care delivery itself", level: "Medium" },
-  { problem: "Livelihoods", buildThis: "Discovery / matching: jobs, courses, buyers, credit documents; price transparency, rest-point maps", doNotPromise: "Wage / contract law enforcement itself", level: "High", note: "discovery" },
-  { problem: "Education / disability", buildThis: "Tamil bilingual tutoring, accessible-format conversion, course/job discovery (ONEST), out-of-school tracking for NGOs", doNotPromise: "Teacher supply, school construction", level: "High" },
-  { problem: "Coast / Ennore", buildThis: "Catch & pollution reporting, spill alerts, price discovery, creek-health citizen science", doNotPromise: "Ash remediation, port / plant regulation", level: "Medium", note: "evidence tools" },
-  { problem: "Housing / resettlement", buildThis: "Entitlement / transport / service navigation for resettled families, NGO case tools", doNotPromise: "Building housing, stopping evictions", level: "Medium", note: "navigation" },
-  { problem: "Governance", buildThis: "Voice / Tamil grievance front-ends, status trackers, RWA dashboards on open data", doNotPromise: "Back-office reform inside GCC / TN", level: "Medium-High", note: "front-end" },
-  { problem: "NGO / community / animals", buildThis: "Volunteer rostering, needs maps, rescue triage, adoption / foster matching, event discovery", doNotPromise: "Shelter construction, veterinary capacity", level: "High" },
+  { problem: "Flooding", researchSlug: "flooding", buildThis: "Street-level flood reporting + alerts, relief matching, reservoir/rain dashboard, safe-route map", doNotPromise: "New SWD network, desilting, floodplain removal", level: "High", note: "info / coordination" },
+  { problem: "Water scarcity", researchSlug: "water", buildThis: "Tanker / RWH / borewell reporting, reservoir-level alerts, leak reporting, water-quality logging", doNotPromise: "Desalination, new reservoirs, pipeline network", level: "High", note: "info — supply itself is Low" },
+  { problem: "Heat", researchSlug: "heat", buildThis: "Heat-safe routing, water/rest/cool-roof point discovery, worker alerts in Tamil voice", doNotPromise: "Tree-planting at scale, building-code retrofit", level: "High" },
+  { problem: "Air", researchSlug: "air", buildThis: "Hyperlocal AQI + clean-air routes, asthma / outdoor-work advisories, dust/burning reports", doNotPromise: "Industrial retrofit, NCAP enforcement", level: "High", note: "advisory" },
+  { problem: "Mobility / safety", researchSlug: "mobility", buildThis: "Multimodal journey help, accessibility & safety layers, blackspot reporting, feeder matching", doNotPromise: "Metro Phase II, new bus fleet, road widening", level: "High", note: "layer" },
+  { problem: "Waste / waterways", researchSlug: "waste", buildThis: "Segregation coaching + pickup tracking, dumping reports, recycler / bulk-generator matching (ONDC)", doNotPromise: "Biomining completion, new processing plants", level: "Medium-High" },
+  { problem: "Dengue / health access", researchSlug: "health", buildThis: "Breeding-site reports, fever-camp & facility discovery, follow-up reminders, FHIR prototypes", doNotPromise: "Vector control at city scale, new hospitals", level: "Medium-High" },
+  { problem: "NCD / maternal / mental health", researchSlug: "health", buildThis: "Screening follow-up, Tamil reminders, referral & check-in tools with human escalation", doNotPromise: "Clinical care delivery itself", level: "Medium" },
+  { problem: "Livelihoods", researchSlug: "livelihoods", buildThis: "Discovery / matching: jobs, courses, buyers, credit documents; price transparency, rest-point maps", doNotPromise: "Wage / contract law enforcement itself", level: "High", note: "discovery" },
+  { problem: "Education / disability", researchSlug: "education", buildThis: "Tamil bilingual tutoring, accessible-format conversion, course/job discovery (ONEST), out-of-school tracking for NGOs", doNotPromise: "Teacher supply, school construction", level: "High" },
+  { problem: "Coast / Ennore", researchSlug: "coast", buildThis: "Catch & pollution reporting, spill alerts, price discovery, creek-health citizen science", doNotPromise: "Ash remediation, port / plant regulation", level: "Medium", note: "evidence tools" },
+  { problem: "Housing / resettlement", researchSlug: "housing", buildThis: "Entitlement / transport / service navigation for resettled families, NGO case tools", doNotPromise: "Building housing, stopping evictions", level: "Medium", note: "navigation" },
+  { problem: "Governance", researchSlug: "governance", buildThis: "Voice / Tamil grievance front-ends, status trackers, RWA dashboards on open data", doNotPromise: "Back-office reform inside GCC / TN", level: "Medium-High", note: "front-end" },
+  { problem: "NGO / community / animals", researchSlug: "communities", buildThis: "Volunteer rostering, needs maps, rescue triage, adoption / foster matching, event discovery", doNotPromise: "Shelter construction, veterinary capacity", level: "High" },
 ]
 
 /* ---------------- Tracks ---------------- */
@@ -171,6 +187,7 @@ export interface Track {
   beneficiaries: string
   icon: string
   evidence: string
+  evidenceLinks?: { text: string; slug: string }[]
   datasets: string[]
   protocol: string[]
   ideas: { name: string; detail: string }[]
@@ -189,6 +206,7 @@ export const tracks: Track[] = [
     icon: "CloudRainWind",
     evidence:
       "2015 floods (500+ deaths, CAG: “man-made disaster”), Michaung Dec 2023 (~468 mm / 48h, >Rs 11,000 crore TN loss), Day Zero 2019, and the Pallikaranai marsh shrinking from >5,000 ha to ~1,247 ha.",
+    evidenceLinks: [{ text: "~468 mm / 48h", slug: "flooding" }, { text: "~1,247 ha", slug: "water" }],
     datasets: [
       "OpenCity flooding & floods 2015/2020 (KML)",
       "OpenCity SWD maps — 114 wards",
@@ -218,6 +236,7 @@ export const tracks: Track[] = [
     icon: "ThermometerSun",
     evidence:
       "41–42 °C humid heat hitting outdoor workers hardest; TN's first-in-India Heat Mitigation Strategy to build on; AQI stuck at “Satisfactory” with PM10 down only ~12% under NCAP.",
+    evidenceLinks: [{ text: "41–42 °C", slug: "heat" }, { text: "PM10 down only ~12%", slug: "air" }],
     datasets: [
       "CPCB real-time AQI via data.gov.in",
       "OpenAQ API",
@@ -247,6 +266,7 @@ export const tracks: Track[] = [
     icon: "Bus",
     evidence:
       "Only 36% of Chennai is near high-frequency bus service; MTC carries 34.1 lakh/day and the Metro carried 11.19 crore in 2025; two-wheelers dominate Tamil Nadu road deaths; the auto fare has been frozen since 2013.",
+    evidenceLinks: [{ text: "36%", slug: "mobility" }, { text: "34.1 lakh/day", slug: "mobility" }],
     datasets: [
       "Organiser-built static GTFS for Chennai (Hack Pack)",
       "OpenCity MRTS lines/stations, bus shelters, road centrelines",
@@ -275,6 +295,7 @@ export const tracks: Track[] = [
     icon: "Briefcase",
     evidence:
       "Gig precarity and women's safety at work; vendors blocked on vending documentation for PM SVANidhi credit; fisherfolk with no price power; 7,302 out-of-school children identified by GCC; ~65% of first-generation learners prefer Tamil–English bilingual teaching.",
+    evidenceLinks: [{ text: "PM SVANidhi credit", slug: "livelihoods" }, { text: "7,302 out-of-school children", slug: "education" }],
     datasets: [
       "eShram aggregates + TNOGD scheme / district data via data.gov.in",
       "OpenCity markets & industrial layers",
@@ -302,6 +323,7 @@ export const tracks: Track[] = [
     icon: "HeartPulse",
     evidence:
       "Dengue surges every monsoon (Chennai 4,592 cases in 2026); Chennai child anaemia 55.3%; Elder Line 14567's taxonomy exists because elders face isolation and abuse; disability inclusion fails on learning materials in appropriate formats and transport, not just ramps.",
+    evidenceLinks: [{ text: "4,592 cases", slug: "health" }, { text: "55.3%", slug: "health" }],
     datasets: [
       "OpenCity health centres / UPHC / maternity / TB / anganwadi lists",
       "TNOGD / HMIS district aggregates",
@@ -331,6 +353,7 @@ export const tracks: Track[] = [
     icon: "Users",
     evidence:
       "In 2015, thousands of volunteers mobilised — coordination, not goodwill, was the bottleneck. Blue Cross of India (Chennai, est. 1959) reports 246,628 ABC surgeries and 336,663 rescues; GCC targeted vaccinating ~2 lakh stray dogs in 2026 with 15 ABC centres scaling 200 → 400 surgeries/day.",
+    evidenceLinks: [{ text: "246,628 ABC surgeries", slug: "communities" }, { text: "~2 lakh stray dogs", slug: "communities" }],
     datasets: [
       "OpenCity shelters, relief centres, parks, waterbodies, heritage layers",
       "OpenStreetMap",

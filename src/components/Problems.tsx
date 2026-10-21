@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { ArrowRight, BookOpen, MousePointerClick } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,16 +20,36 @@ export function Problems() {
 
   return (
     <div>
+      <p className="mb-6 flex items-center gap-2 text-sm font-medium text-muted-foreground">
+        <MousePointerClick className="h-4 w-4 shrink-0 text-primary" />
+        Tap any stat to read the underlying research.
+      </p>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {problemCards.map((p) => (
           <Card key={p.title} className="rounded-2xl">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">{p.title}</CardTitle>
-              <div className="text-sm font-bold text-primary">{p.stat}</div>
+              <div className="text-sm font-bold text-primary">
+                <a
+                  href={`#/research/${p.researchSlug}`}
+                  aria-label={`${p.stat} — read the research on ${p.title}`}
+                  className="rounded-sm underline decoration-primary/40 underline-offset-4 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  {p.stat}
+                </a>
+              </div>
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">{p.detail}</p>
-              <p className="mt-3 text-xs font-medium uppercase tracking-wide text-zinc-400">{p.source}</p>
+              <div className="mt-3 flex items-center justify-between gap-2">
+                <p className="text-xs font-medium uppercase tracking-wide text-zinc-400">{p.source}</p>
+                <a
+                  href={`#/research/${p.researchSlug}`}
+                  className="inline-flex shrink-0 items-center gap-1 rounded-sm py-1 text-xs font-semibold text-primary underline decoration-primary/50 underline-offset-2 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Research <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -47,6 +68,26 @@ export function Problems() {
           </CardContent>
         </Card>
       </div>
+
+      <a href="#/research" className="group mt-6 block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <Card className="rounded-2xl border-primary/30 transition-colors group-hover:border-primary/60">
+          <CardContent className="flex flex-wrap items-center gap-4 p-5">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <BookOpen className="h-5 w-5" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="font-semibold">Want the full evidence, with photos and sources?</div>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                The research page walks through all thirteen problem areas — the numbers, the
+                flags, and what could not be verified.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary underline decoration-primary/50 underline-offset-4 group-hover:decoration-primary">
+              Read the research <ArrowRight className="h-4 w-4" />
+            </span>
+          </CardContent>
+        </Card>
+      </a>
 
       <h3 className="mt-12 text-xl font-bold tracking-tight">
         Solvability ranking — build this, don&apos;t promise that
@@ -82,7 +123,14 @@ export function Problems() {
           <tbody>
             {rows.map((r) => (
               <tr key={r.problem} className="border-t align-top">
-                <td className="px-4 py-3 font-semibold">{r.problem}</td>
+                <td className="px-4 py-3 font-semibold">
+                  <a
+                    href={`#/research/${r.researchSlug}`}
+                    className="rounded-sm underline decoration-primary/40 underline-offset-4 hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {r.problem}
+                  </a>
+                </td>
                 <td className="px-4 py-3 text-muted-foreground">{r.buildThis}</td>
                 <td className="px-4 py-3 text-muted-foreground">{r.doNotPromise}</td>
                 <td className="px-4 py-3">

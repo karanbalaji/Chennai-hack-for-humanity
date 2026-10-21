@@ -1,4 +1,4 @@
-import type { ComponentType } from "react"
+import type { ComponentType, ReactNode } from "react"
 import {
   AlertTriangle,
   Briefcase,
@@ -24,6 +24,40 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   Briefcase,
   HeartPulse,
   Users,
+}
+
+const evidenceLinkCls =
+  "rounded-sm px-0.5 -mx-0.5 font-semibold text-foreground underline decoration-primary/60 underline-offset-2 hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+
+/** Render a track evidence line with its cited numbers linked to the research page. */
+function renderEvidence(text: string, links?: { text: string; slug: string }[]): ReactNode {
+  if (!links?.length) return text
+  const out: ReactNode[] = []
+  let rest = text
+  let key = 0
+  while (rest) {
+    let bestIdx = -1
+    let best: { text: string; slug: string } | undefined
+    for (const l of links) {
+      const i = rest.indexOf(l.text)
+      if (i >= 0 && (bestIdx < 0 || i < bestIdx)) {
+        bestIdx = i
+        best = l
+      }
+    }
+    if (bestIdx < 0 || !best) {
+      out.push(rest)
+      break
+    }
+    if (bestIdx > 0) out.push(rest.slice(0, bestIdx))
+    out.push(
+      <a key={key++} href={`#/research/${best.slug}`} className={evidenceLinkCls}>
+        {best.text}
+      </a>,
+    )
+    rest = rest.slice(bestIdx + best.text.length)
+  }
+  return out
 }
 
 function Chips({ items, variant = "secondary" }: { items: string[]; variant?: "secondary" | "outline" }) {
@@ -81,7 +115,7 @@ export function Tracks() {
 
                   <p className="mt-5 max-w-4xl text-sm leading-relaxed text-muted-foreground">
                     <span className="font-semibold text-foreground">The problem, with evidence: </span>
-                    {t.evidence}
+                    {renderEvidence(t.evidence, t.evidenceLinks)}
                   </p>
 
                   <div className="mt-6 grid gap-6 lg:grid-cols-2">

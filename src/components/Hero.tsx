@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, CheckCircle2 } from "lucide-react"
+import { ArrowRight, BookOpen, CalendarDays, CheckCircle2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -45,13 +45,30 @@ export function Hero() {
               </a>
             </Button>
           </div>
+          <p className="mt-5">
+            <a
+              href="#/research"
+              className="inline-flex min-h-[2.75rem] items-center gap-1 rounded-sm text-sm font-semibold text-primary underline decoration-primary/50 underline-offset-4 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              <BookOpen className="h-4 w-4" /> Read the research behind the tracks
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </p>
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {heroStats.map((s) => (
             <Card key={s.label} className="rounded-2xl bg-white/80">
               <CardContent className="p-5">
-                <div className="text-2xl font-extrabold tracking-tight text-primary">{s.value}</div>
+                <div className="text-2xl font-extrabold tracking-tight text-primary">
+                  <a
+                    href={`#/research/${s.researchSlug}`}
+                    aria-label={`${s.value} — read the research: ${s.label}`}
+                    className="rounded-sm underline decoration-primary/40 underline-offset-4 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {s.value}
+                  </a>
+                </div>
                 <div className="mt-1 text-sm font-semibold leading-snug">{s.label}</div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
               </CardContent>

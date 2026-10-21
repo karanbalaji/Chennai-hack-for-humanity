@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { navLinks } from "@/data/content"
 import { cn } from "@/lib/utils"
 
-export function Nav() {
+export function Nav({ view = "landing" }: { view?: "landing" | "research" }) {
   const [open, setOpen] = useState(false)
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
@@ -24,6 +24,16 @@ export function Nav() {
               <a href={link.href}>{link.label}</a>
             </Button>
           ))}
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className={view === "research" ? "font-bold text-primary" : "font-semibold text-primary"}
+          >
+            <a href="#/research" aria-current={view === "research" ? "page" : undefined}>
+              Research
+            </a>
+          </Button>
         </nav>
         <div className="flex items-center gap-2">
           <Button size="sm" className="hidden h-11 sm:inline-flex" asChild>
@@ -55,6 +65,11 @@ export function Nav() {
               </a>
             </Button>
           ))}
+          <Button variant="ghost" className="h-11 justify-start font-semibold text-primary" asChild>
+            <a href="#/research" onClick={() => setOpen(false)}>
+              Research
+            </a>
+          </Button>
         </div>
       </nav>
     </header>
