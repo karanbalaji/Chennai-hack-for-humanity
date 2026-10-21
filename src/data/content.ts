@@ -42,7 +42,7 @@ export const heroStats = [
 
 export const threeTests = [
   {
-    title: "Buildable in 48–72 hours",
+    title: "Buildable in a weekend",
     detail: "A working prototype, not a pitch deck. If it needs new drains, a metro line, or a desalination plant, it is not a hack.",
   },
   {

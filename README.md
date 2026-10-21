@@ -1,7 +1,7 @@
 # Hack for Humanity — Chennai
 
 A single-page React + Vite + TypeScript site for **Hack for Humanity Chennai**, a
-build-and-give-back hackathon: any problem technology can help solve in 48–72 hours
+build-and-give-back hackathon: any problem technology can help solve in a weekend
 for a real Chennai person or group — not just government/civic services.
 
 Modelled on the Georgian HackON 2026 landing page, built with Tailwind CSS v3 and

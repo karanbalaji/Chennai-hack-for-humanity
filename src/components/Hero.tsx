@@ -24,7 +24,7 @@ export function Hero() {
           </p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
             This is not a government-services hackathon. It is any problem technology can
-            help solve in 48–72 hours, for a real Chennai person or group — flood-prone
+            help solve in a weekend, for a real Chennai person or group — flood-prone
             households, fisherfolk, street vendors, gig and domestic workers, small
             businesses, first-generation students, elderly people living alone, persons
             with disabilities, neighbourhood communities, NGOs, local artists, and the

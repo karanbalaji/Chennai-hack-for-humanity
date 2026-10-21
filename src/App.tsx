@@ -81,7 +81,7 @@ export default function App() {
             id="tracks"
             eyebrow="The Tracks"
             title="Six tracks, thirty-six briefs"
-            intro="Each track names its beneficiaries, the open datasets to use, the open protocol or framework to build on, and six project briefs that are genuinely buildable in 48–72 hours. Pick a track, then pick a brief — or bring your own that passes the same three tests."
+            intro="Each track names its beneficiaries, the open datasets to use, the open protocol or framework to build on, and six project briefs that are genuinely buildable in a weekend. Pick a track, then pick a brief — or bring your own that passes the same three tests."
             muted
           >
             <Tracks />

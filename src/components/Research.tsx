@@ -105,7 +105,7 @@ export function Research() {
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
               This hackathon is not only about government or civic services. The framing is{" "}
               <strong className="text-foreground">build and give back to Chennai</strong>: any
-              problem technology can help solve in 48–72 hours, for a named, real beneficiary
+              problem technology can help solve in a weekend, for a named, real beneficiary
               — flood-prone households, fisherfolk, street vendors, gig and domestic workers,
               MSMEs, first-generation students, elderly people living alone, persons with
               disabilities, neighbourhood communities, NGOs, local artists, and community-animal

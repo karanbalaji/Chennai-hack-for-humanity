@@ -134,7 +134,7 @@ export function Tracks() {
                   </div>
 
                   <h4 className="mb-3 mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide">
-                    <Lightbulb className="h-4 w-4 text-primary" /> Six project briefs — buildable in 48–72 hours
+                    <Lightbulb className="h-4 w-4 text-primary" /> Six project briefs — buildable in a weekend
                   </h4>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {t.ideas.map((idea, i) => (

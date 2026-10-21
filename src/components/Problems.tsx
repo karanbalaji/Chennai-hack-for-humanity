@@ -94,7 +94,7 @@ export function Problems() {
       </h3>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
         All 14 problem areas from the research, ranked by what a team can actually
-        ship in 48–72 hours. Filter by solvability:
+        ship in a weekend. Filter by solvability:
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {filters.map((f) => (
