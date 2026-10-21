@@ -4,6 +4,8 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
+  // GitHub Pages project site: https://karanbalaji.github.io/Chennai-hack-for-humanity/
+  base: "/Chennai-hack-for-humanity/",
   plugins: [react()],
   resolve: {
     alias: {
